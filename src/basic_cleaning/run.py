@@ -27,6 +27,8 @@ def remove_outliers(raw_df, min_price, max_price):
     logger.info("Removing outliers")
     idx = raw_df['price'].between(min_price, max_price)
     filtered_df = raw_df[idx].copy()
+    idx = filtered_df['longitude'].between(-74.25, -73.50) & filtered_df['latitude'].between(40.5, 41.2)
+    filtered_df = filtered_df[idx].copy()
     return filtered_df
 
 
